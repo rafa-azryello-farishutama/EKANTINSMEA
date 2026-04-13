@@ -1,0 +1,303 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.kotakBesar{
+    position: fixed;
+    height: 100vh;
+    width: 250px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background-color: purple;
+}
+
+.containerMenu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.containerMenu a{
+    text-decoration: none;
+}
+
+.anggotaInput{
+    height: 50px;
+    width: 185px;
+    background-color: plum;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kotakMenu{
+    position: fixed;
+    left: 250px;
+    width: calc(100vw - 250px);
+    height: 180px;
+    background-color: aqua;
+    top: 0;
+    overflow: hidden;
+    display: flex;         
+    align-items: flex-end;
+    padding-left: 20px; 
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.containerBawah {
+    display: flex;
+}
+
+.kol-ID, .col-ID       { display: flex; justify-content: center; width: 50px; }
+.kol-user, .col-user    { display: flex; justify-content: center; width: 230px; }
+.kol-tipe, .col-tipe    { display: flex; justify-content: center; width: 100px; }
+.kol-role, .col-role     { display: flex; justify-content: center; width: 100px; }
+.kol-telepon, .col-telepon { display: flex; justify-content: center; width: 190px; }
+.kol-email, .col-email   { display: flex; justify-content: center; width: 200px; }
+.kol-status, .col-status   { display: flex; justify-content: center; width: 120px; }
+
+.kotakTombol a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+
+.kotakList {
+    position: fixed;
+    top: 180px;
+    left: 250px;
+    width: calc(100vw - 250px);
+    height: calc(100vh - 180px); 
+    overflow-y: auto; 
+    padding-left: 20px; 
+    margin-top: 0;
+    box-sizing: border-box;
+    z-index: 1; 
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    height: 60px; 
+    border-bottom: 1px solid black; 
+}
+
+.kotakList::-webkit-scrollbar {
+    display: none;
+}
+
+.jarakTombol {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.tombolPenjual button, .tombolPembeli button, .tombolSemua button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.tombolPenjual button {
+    background-color: purple;
+    color: white;
+}
+
+.tombolPembeli button, .tombolSemua button {
+    background-color: white;
+    color: purple;
+}
+
+.tombolPenjual button:hover {
+    background-color: plum;
+    color: purple;
+}
+
+.tombolPembeli button:hover, .tombolSemua button {
+    background-color: purple;
+    color: white;
+}
+
+.nonaktifPengguna {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nonaktifPengguna input[type="number"] {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    font-size: 13px;
+    width: 80px;
+}
+
+.nonaktifPengguna input[type="submit"] {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    background-color: purple;
+    color: white;
+    transition: 0.3s;
+}
+
+.nonaktifPengguna input[type="submit"]:hover {
+    background-color: plum;
+    color: purple;
+}
+
+.kotakTengah {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 300px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.tombolAktif {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tombolAktif:hover {
+    background-color: plum;
+    color: purple;
+}
+
+.tombolNonaktif {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid purple;
+    border-radius: 20px;
+    background-color: white;
+    color: purple;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tombolNonaktif:hover {
+    background-color: purple;
+    color: white;
+}
+
+.judulKotak {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+}
+
+.infoUser {
+    width: 100%;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+}
+
+.infoUser p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.infoUser span {
+    font-weight: bold;
+    color: purple;
+}
+
+.gambarCentang {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.kalimatBawah {
+    font-size: 14px;
+    font-weight: bold;
+    color: purple;
+    margin: 5px 0;
+    text-align: center;
+}
+
+.kotakTombol {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.kotakTombol .tombolAktif {
+    flex: 1;
+}
+
+.popupBackground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.akun {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: purple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.akun p {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+}
+
+.jarakTombol a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}

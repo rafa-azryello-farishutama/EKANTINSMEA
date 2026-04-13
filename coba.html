@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styleCoba.css">
+</head>
+<body>
+    <div class='popupBackground'>
+            <div class='kotakTengah'>
+                <p class='judulKotak'>Ubah Status User</p>
+                <div class='infoUser'>
+                    <p><span>Nama</span> : $username</p>
+                    <p><span>Role</span> : $role</p>
+                    <p><span>Tipe</span> : $tipe</p>
+                    $htmlNamaToko
+                </div>
+                <div class='kotakTombol'>
+                    <form method='POST'>
+                        <button type='submit' name='id_aktif' value='$id' class='tombolAktif'>Aktifkan</button>
+                    </form>
+                    <form method='POST'>
+                        <button type='submit' name='id_nonaktif' value='$id' class='tombolNonaktif'>Nonaktifkan</button>
+                    </form>
+                </div>
+            </div>
+        </div>";
+</body>
+</html>

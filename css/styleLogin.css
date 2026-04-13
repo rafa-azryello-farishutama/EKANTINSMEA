@@ -1,0 +1,125 @@
+body{
+    display: flex;
+    background-color: #9e070e;
+    min-height: 100vh;
+    margin: 70px;
+    justify-content: center;
+}
+
+.kotakLogin{
+    width: 475px;
+    background-color: #f5f6f1;
+    border-radius: 53px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: stretch;
+    padding: 30px 30px;
+    box-sizing: border-box;
+}
+
+.kotakAtas{
+    align-self: center;
+    width: 200px;
+    background-color: #d9d8d9;
+    height: 7px;
+    border-radius: 53px;
+}
+
+form {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.logo{
+    width: 256px;
+    height: auto;
+}
+
+.tulisan{
+    width: 100px;
+    height: auto;
+}
+
+.containerInput{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px ;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.kotakInput{
+    width: 100%;
+    height: 50px;
+    background-color: #d9d8d9;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+.kotakInput img {
+    width: 20px;
+    height: auto;
+    opacity: 0.6;
+}
+
+.kotakInput input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 20px;
+    color: black;
+    width: 100%;
+}
+
+.kotakSubmit{
+    width: 100%;
+    height: 50px;
+    background-color: #9e070e;
+    border-radius: 15px;
+    display: flex;
+    align-items: 8px;
+    box-sizing: border-box;
+    padding: 0 15px;
+    margin-top: 20px;
+}
+
+.kotakSubmit input{
+    text-decoration: none;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.tengah {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.lupaSandi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.lupaSandi a{
+    text-decoration: none;
+    color: grey;
+}

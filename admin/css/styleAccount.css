@@ -1,0 +1,146 @@
+body {
+    display: flex;
+    background-color: white;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.containerUtama {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    gap: 20px;
+}
+
+.containerKotak {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.kotakLogo {
+    width: 300px;
+    height: 130px;
+    background-color: #9e070e; 
+    border-radius: 0 0 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kotakLogo img{
+    width: 200px;
+    height: auto;
+}
+
+.kotakMenu {
+    width: 300px;
+    flex: 1;
+    background-color: #9e070e; 
+    border-radius: 0 30px 0 0;
+}
+
+.barisMenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
+.menu{
+    width: 100%;
+    height: 50px;
+    background-color: yellow;
+    border-radius: 15px;
+    display: flex;
+    align-items: 8px;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+
+.kotakProfil {
+    flex: 1;
+    background-color: #cbcbcb; 
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.containerProfile{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    left: 4;
+}
+
+.fotoProfil{
+    margin-top: 50px;
+    width: 300px;
+    height: 300px;
+    background-color: #d9d9d9;
+    border-radius: 15px;
+}
+
+form {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.kotakNama{
+    width: 300px;
+    height: 70px;
+    background-color: red;
+    border-radius: 15px;
+    border: none;
+}
+
+.kotakNama p{
+    font-size: 20px;
+    font-weight: bold;
+    color: #f5f6f1;
+}
+
+.informasiProfile{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 556px;
+}
+
+.informasiProfile img{
+    width: 200px;
+    height: auto;
+}
+
+.informasiClass1{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.informasiClass2{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.informasiClass2 p{
+    font-size: 18px;
+    color: #9e070e;
+}
+
+.informasiClass3{
+    width: 100%;
+    height: 50px;
+    background-color: #f5f6f1;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
