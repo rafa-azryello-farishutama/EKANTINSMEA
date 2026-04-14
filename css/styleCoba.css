@@ -157,18 +157,17 @@ body{
     cursor: pointer;
     font-weight: bold;
     font-size: 13px;
-    background-color: purple;
+    background-color: #9e080f;
     color: white;
     transition: 0.3s;
 }
 
 .nonaktifPengguna input[type="submit"]:hover {
-    background-color: plum;
-    color: purple;
+    color: #9e080f;
 }
 
 .kotakTengah {
-    background-color: white;
+    background-color: #f5f6f1;
     border-radius: 12px;
     padding: 30px 40px;
     display: flex;
@@ -177,6 +176,7 @@ body{
     gap: 15px;
     width: 300px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    position: relative;
 }
 
 .tombolAktif {
@@ -184,26 +184,35 @@ body{
     padding: 10px;
     border: none;
     border-radius: 20px;
-    background-color: purple;
-    color: white;
+    background-color: #f5f6f1;
+    color: #9e080f;
+    border: 3px solid #9e080f;
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
     transition: 0.3s;
 }
 
+.kotakTombol form {
+    flex: 1;
+}
+
+.kotakTombol form button {
+    width: 100%;
+}
+
 .tombolAktif:hover {
-    background-color: plum;
-    color: purple;
+    background-color: #9e080f;
+    color: #f5f6f1;
 }
 
 .tombolNonaktif {
     width: 100%;
     padding: 10px;
-    border: 2px solid purple;
+    border: 2px solid #9e080f;
     border-radius: 20px;
-    background-color: white;
-    color: purple;
+    background-color: #f5f6f1;
+    color: #9e080f;
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
@@ -211,19 +220,19 @@ body{
 }
 
 .tombolNonaktif:hover {
-    background-color: purple;
-    color: white;
+    background-color: #9e080f;
+    color: #f5f6f1;
 }
 
 .judulKotak {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     margin: 0;
 }
 
 .infoUser {
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: #ececec;
     border-radius: 8px;
     padding: 10px 15px;
     box-sizing: border-box;
@@ -231,32 +240,34 @@ body{
 
 .infoUser p {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .infoUser span {
     font-weight: bold;
-    color: purple;
+    color: #9e080f;
 }
 
 .gambarCentang {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: auto;
     object-fit: contain;
 }
 
 .kalimatBawah {
     font-size: 14px;
     font-weight: bold;
-    color: purple;
+    color: #9f0007;
     margin: 5px 0;
     text-align: center;
 }
 
 .kotakTombol {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
-    width: 100%;
+    width: 300px;
 }
 
 .kotakTombol .tombolAktif {
@@ -300,4 +311,15 @@ body{
     text-decoration: none;
     display: flex;
     align-items: center;
+}
+
+.tombolClose {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.tombolClose img {
+    width: 35px;
+    height: auto;
 }

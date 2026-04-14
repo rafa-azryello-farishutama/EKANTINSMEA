@@ -1,6 +1,117 @@
 <?php
 include '../koneksi.php';
 
+$popup = "";
+
+if(isset($_POST['id_aktif'])){
+    $id = $_POST['id_aktif'];
+    $cek = $db_ekantin->query("SELECT * FROM users WHERE id_users='$id'");
+    if($cek->num_rows > 0){
+        $data = $cek->fetch_assoc();
+        $username = $data['username'];
+        $status = $data['status'];
+        if($status == 'aktif'){
+            $htmlStatus = "Akun $username sudah aktif!";
+            $htmlGambar = "../img/silang1.png";
+        } else {
+            $db_ekantin->query("UPDATE users SET status='Aktif' WHERE id_users='$id'");
+            $htmlStatus = "Akun $username berhasil diaktifkan!";
+            $htmlGambar = "../img/centang1.png";
+        }
+        $popup = "
+        <div class='popupBackground'>
+        <div class='kotakTengah'>
+            <img src='$htmlGambar' class='gambarCentang'>
+            <p class='kalimatBawah'>$htmlStatus</p>
+            <div class='kotakTombol'>
+                <a href='kelolaUser.php'><button class='tombolAktif'>Kembali</button></a>
+            </div>
+        </div>
+        </div>";
+    }
+}
+
+if(isset($_POST['id_nonaktif'])){
+    $id = $_POST['id_nonaktif'];
+    $cek = $db_ekantin->query("SELECT * FROM users WHERE id_users='$id'");
+    if($cek->num_rows > 0){
+        $data = $cek->fetch_assoc();
+        $username = $data['username'];
+        $status = $data['status'];
+        if($status == 'nonaktif'){
+            $htmlStatus = "Akun $username sudah tidak aktif!";
+            $htmlGambar = "../img/silang1.png";
+        } else {
+            $db_ekantin->query("UPDATE users SET status='Nonaktif' WHERE id_users='$id'");
+            $htmlStatus = "Akun $username berhasil dinonaktifkan!";
+            $htmlGambar = "../img/centang1.png";
+        }
+        $popup = "
+        <div class='popupBackground'>
+        <div class='kotakTengah'>
+            <img src='$htmlGambar' class='gambarCentang'>
+            <p class='kalimatBawah'>$htmlStatus</p>
+            <div class='kotakTombol'>
+                <a href='kelolaUser.php'><button class='tombolAktif'>Kembali</button></a>
+            </div>
+        </div>
+        </div>";
+    }
+}
+
+$searchPopup = "";
+if(isset($_POST['id_user']) && $_POST['id_user'] != ''){
+    $id = $_POST['id_user'];
+    $result_search = $db_ekantin->query("SELECT * FROM users WHERE id_users='$id'");
+    if($result_search->num_rows > 0){
+        $data = $result_search->fetch_assoc();
+        $username = $data['username'];
+        $role     = $data['role'];
+        $tipe     = $data['tipe'];
+        $htmlNamaToko = "";
+        if($role == "penjual"){
+            $hasil = $db_ekantin->query("SELECT nama_toko FROM penjual WHERE id_users='$id'");
+            $nama  = $hasil->fetch_assoc();
+            $nama_toko = $nama['nama_toko'];
+            $htmlNamaToko = "<p><span>Nama Toko</span> : $nama_toko</p>";
+        }
+        $searchPopup = "
+        <div class='popupBackground'>
+            <div class='kotakTengah'>
+                <a class='tombolClose' href='kelolaUser.php'>
+                    <img src='../img/silang1.png'>
+                </a>
+                <p class='judulKotak'>UBAH STATUS USER</p>
+                <div class='infoUser'>
+                    <p><span>NAMA</span> : $username</p>
+                    <p><span>ROLE</span> : $role</p>
+                    <p><span>TIPE</span> : $tipe</p>
+                    $htmlNamaToko
+                </div>
+                <div class='kotakTombol'>
+                    <form method='POST'>
+                        <button type='submit' name='id_aktif' value='$id' class='tombolAktif'>Aktifkan</button>
+                    </form>
+                    <form method='POST'>
+                        <button type='submit' name='id_nonaktif' value='$id' class='tombolNonaktif'>Nonaktifkan</button>
+                    </form>
+                </div>
+            </div>
+        </div>";
+    } else {
+        $searchPopup = "
+        <div class='popupBackground'>
+        <div class='kotakTengah'>
+            <img src='img/silang1.png' class='gambarCentang'>
+            <p class='kalimatBawah'>ID tidak ditemukan!</p>
+            <div class='kotakTombol'>
+                <a href='kelolaUser.php'><button class='tombolAktif'>Kembali</button></a>
+            </div>
+        </div>
+        </div>";
+    }
+}
+
 if(isset($_POST['filter_penjual'])){
     $query = "SELECT * FROM users WHERE role='penjual'";
 } elseif(isset($_POST['filter_pembeli'])){
@@ -16,10 +127,13 @@ if(isset($_POST['filter_penjual'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/styleDashboard.css">
+    <link rel="stylesheet" href="css/styleKelola.css">
 </head>
 <body>
     
+    <?php echo $popup; ?>
+    <?php echo $searchPopup; ?>
+
     <div class="containerUtama">
 
         <div class="containerKotak">
@@ -30,13 +144,13 @@ if(isset($_POST['filter_penjual'])){
             <div class="kotakMenu">
                 <div class="barisMenu">
                     <a href="dashboard.php">
-                    <div class="menu" id="menu_aktif">
+                    <div class="menu">
                         <p>Home</p>
                     </div>
                     </a>
 
                     <a href="kelolaUser.php">
-                    <div class="menu">
+                    <div class="menu" id="menu_aktif">>
                         <p>Kelola User</p>
                     </div>
                     </a>
@@ -52,7 +166,7 @@ if(isset($_POST['filter_penjual'])){
                 <div class="containerCari">
                     <div class="kotakSearch">
                         <img src="../img/search.png">
-                        <input type="number" name="name_id" placeholder="Search id">
+                        <input type="number" name="id_user" placeholder="Search id">
                     </div>
                     <button type="submit" name="cari_user" class="tombolSearch">Search id</button>
                 </div>
