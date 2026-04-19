@@ -248,17 +248,37 @@ form {
     flex-direction: column;
     gap: 20px;
     overflow-y: auto; 
+    overflow-x: auto;
 }
 
 .kotakList::-webkit-scrollbar {
     display: none; /* Chrome, Safari */
 }
 
+.tombolTambah {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.tombolTambah img {
+    width: 55px;
+    height: auto;
+}
+
+
 .invisible {
     width: 100%;
     height: 40px;
     padding: 15px 20px;
-    background-color:  green;
+    background-color:  #cbcbcb;
     border-radius: 15px 0 0 0;
     display: flex;
 }
@@ -279,19 +299,20 @@ form {
     height: 50px;
     background-color:  #d9d9d9;
     border-radius: 15px;
+    display: flex;
 }
 
 .containerBawah {
     display: flex;
 }
 
-.kol-ID, .col-ID       { display: flex; justify-content: center; width: 50px; }
-.kol-user, .col-user    { display: flex; justify-content: center; width: 230px; }
-.kol-tipe, .col-tipe    { display: flex; justify-content: center; width: 100px; }
-.kol-role, .col-role     { display: flex; justify-content: center; width: 100px; }
-.kol-telepon, .col-telepon { display: flex; justify-content: center; width: 180px; }
-.kol-email, .col-email   { display: flex; justify-content: center; width: 180px; }
-.kol-status, .col-status   { display: flex; justify-content: center; width: 80px; }
+.kol-ID, .col-ID          { display: block; text-align: center; width: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kol-user, .col-user      { display: block; text-align: center; width: 230px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kol-tipe, .col-tipe      { display: block; text-align: center; width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kol-role, .col-role      { display: block; text-align: center; width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kol-telepon, .col-telepon{ display: block; text-align: center; width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kol-email, .col-email    { display: block; text-align: center; width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kol-status, .col-status  { display: block; text-align: center; width: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .kotakTengah {
     background-color: #f5f6f1;
@@ -315,7 +336,7 @@ form {
     width: 100%;
 }
 
-.tombolAktif {
+.tombolAktif, .tombolNonaktif, .tombolEdit, .tombolPassword, .tombolSubmit, .linkKembali{
     width: 100%;
     padding: 10px;
     border: none;
@@ -342,20 +363,17 @@ form {
     color: #f5f6f1;
 }
 
-.tombolNonaktif {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #9e080f;
-    border-radius: 20px;
-    background-color: #f5f6f1;
-    color: #9e080f;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
+.tombolNonaktif:hover {
+    background-color: #9e080f;
+    color: #f5f6f1;
 }
 
-.tombolNonaktif:hover {
+.tombolEdit:hover{
+    background-color: #9e080f;
+    color: #f5f6f1;
+}
+
+.tombolPassword:hover{
     background-color: #9e080f;
     color: #f5f6f1;
 }
@@ -416,8 +434,7 @@ form {
 
 .kotakTombol {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     gap: 10px;
     width: 300px;
 }
@@ -435,4 +452,129 @@ form {
 .tombolClose img {
     width: 35px;
     height: auto;
+}
+
+.judulKotak {
+    font-weight: 500;
+    font-size: 15px;
+    color: #9e080f;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.infoUsername {
+    margin: 0;
+    font-size: 14px;
+    color: #9e080f;
+}
+
+.infoUsername b {
+    color: #9e080f;
+}
+
+.kotakInput {
+    width: 270px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #f5f6f1;
+    color: #9e070e;
+    border: 3px solid #9e080f;
+    font-size: 14px;
+    outline: none;
+}
+
+.tombolSubmit {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #9e080f;
+    color: #f5f6f1;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
+
+.tombolKembali {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #f5f6f1;
+    border-radius: 20px;
+    background-color: transparent;
+    color: #9e080f;
+    border: 3px solid #9e080f;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.isiPopup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+}
+
+.pemisahTombol{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.kotakIsi{
+    width:100%;
+    height: 47px;
+    padding:20px;
+    border-radius:20px;
+    border: none;
+    box-sizing:border-box;
+    background-color: #9e080f;
+    color: #f5f6f1;
+}
+
+.tombolSimpan {
+    background: #9e080f;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #f5f6f1;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.tombolSimpan:hover {
+    background: #9e080f;
+}
+
+.linkSimpan {
+    background: #9e080f;
+    width: 120px;
+    height: 35px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f5f6f1;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.linkSimpan:hover {
+    background: #9e080f;
 }

@@ -1,7 +1,174 @@
 <?php
 include '../koneksi.php';
 
+$notif = '';
+if(isset($_POST['simpan_input'])){
+        $id       = $_POST['id_edit'];
+        $username = $_POST['username'];
+        $telepon  = $_POST['no_telepon'];
+        $email    = $_POST['email'];
+        $alamat   = $_POST['alamat'];
+        $tipe     = $_POST['tipe'];
+        $role     = $_POST['role'];
+
+        $db_ekantin->query("UPDATE users SET 
+            username='$username', 
+            no_telepon='$telepon', 
+            email='$email', 
+            alamat='$alamat', 
+            tipe='$tipe', 
+            role='$role' 
+            WHERE id_users='$id'");
+
+         $notif = "
+            <div class='popupBackground'>
+                <div class='kotakTengah'>
+                <img src='../img/centang1.png' class='gambarCentang'>
+                <p class='kalimatBawah'>Informasi User berhasil diubah!</p>
+                <div class='kotakTombol'>
+                    <a href='kelolaUser.php'><button class='tombolAktif'>Kembali</button></a>
+                </div>
+            </div>
+            </div>";
+        }
+
+if(isset($_POST['simpan_edit'])){
+    $id=$_POST['id_edit'];
+    $password = $_POST['password'];
+
+    $db_ekantin->query("UPDATE users SET password='$password' WHERE id_users='$id'");
+
+     $notif = "
+            <div class='popupBackground'>
+                <div class='kotakTengah'>
+                <img src='../img/centang1.png' class='gambarCentang'>
+                <p class='kalimatBawah'>Password Sudah berhasil ditambahkan</p>
+                <div class='kotakTombol'>
+                    <a href='kelolaUser.php'><button class='tombolAktif'>Kembali</button></a>
+                </div>
+            </div>
+            </div>";
+}
+
+//--AKTIFAN USER
 $popup = "";
+if(isset($_POST['edit_user'])){
+        $id = $_POST['edit_user'];
+        $result = $db_ekantin->query("SELECT * FROM users WHERE id_users='$id'");
+        if($result->num_rows > 0){
+            $data = $result->fetch_assoc();
+            $username = $data['username'];
+            $role = $data['role'];
+            $tipe = $data['tipe'];
+            $telepon = $data['no_telepon'];
+            $email = $data['email'];
+            $alamat = $data['alamat'];
+
+            if($tipe == 'siswa'){
+                $cekSiswa = 'checked';
+            } else {
+                $cekSiswa = '';
+            }
+
+            if($tipe == 'guru'){
+                $cekGuru = 'checked';
+            } else {
+                $cekGuru = '';
+            }
+
+            if($tipe == 'orang_luar'){
+                $cekOrangluar = 'checked';
+            } else {
+                $cekOrangluar = '';
+            }
+
+            if($role == 'penjual'){
+                $cekPenjual = 'checked';
+            } else{
+                $cekPenjual = '';
+            }
+
+            if($role == 'pembeli'){
+                $cekPembeli = 'checked';
+            } else {
+                $cekPembeli = '';
+            }
+
+            $popup = "
+            <div class='popupBackground'>
+                <div class='kotakTengah'>
+                    <p class='judulKotak'>Edit User</p>
+        
+                <form method='POST' class='isiPopup'>
+
+                    <input type='hidden' name='id_edit' value='$id'>
+
+                    <input type='text' name='username' class='kotakIsi' placeholder='Username' value='$username'>
+                    <input type='text' name='no_telepon' class='kotakIsi' placeholder='No HP' value='$telepon'>
+                    <input type='text' name='email' class='kotakIsi' placeholder='Email' value='$email'>
+                    <input type='text' name='alamat' class='kotakIsi' placeholder='Alamat' value='$alamat'>
+
+                <div class='kotakRadio'>
+                <label>
+                    <input type='radio' name='tipe' value='siswa' $cekSiswa> Siswa
+                </label>
+
+                <label>
+                    <input type='radio' name='tipe' value='guru' $cekGuru> Guru
+                </label>
+
+                <label>
+                    <input type='radio' name='tipe' value='orang_luar' $cekOrangluar> Orang Luar
+                </label>
+                </div>
+
+            <div class='kotakRadio'>
+                <label>
+                    <input type='radio' name='role' value='penjual' $cekPenjual> Penjual
+                </label>
+
+                <label>
+                    <input type='radio' name='role' value='pembeli' $cekPembeli> Pembeli
+                </label>
+            </div>
+
+           <div class='pemisahTombol'>
+            <input type='submit' name='simpan_input' value='Simpan' class='tombolSimpan'>
+            <a href='edit.php' class='linkSimpan'>Kembali</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>";
+            
+        }
+    }
+
+if(isset($_POST['password_user'])){
+    $id = $_POST['password_user'];
+    $result = $db_ekantin->query("SELECT * FROM users WHERE id_users='$id'");
+    if($result->num_rows > 0){
+        $data = $result->fetch_assoc();
+        $username = $data['username'];
+
+        $popup = "
+        <div class='popupBackground'>
+            <div class='kotakTengah'>
+                <a class='tombolClose' href='kelolaUser.php'>
+                    <img src='../img/silang1.png'>
+                </a>
+                <p class='judulKotak'>Edit Password</p>
+                <p class='infoUsername'>Username : <b>$username</b></p>
+                <form method='POST' class='isiPopup'>
+                    <input type='hidden' name='id_edit' value='$id'>
+                    <input type='password' name='password' class='kotakInput' placeholder='Password'>
+                    <input type='submit' name='simpan_edit' value='SIMPAN' class='tombolSubmit'>
+                    <a href='kelolaUser.php' class='tombolKembali'>KEMBALI</a>
+                </form>
+            </div>
+        </div>";
+    }
+}
 
 if(isset($_POST['id_aktif'])){
     $id = $_POST['id_aktif'];
@@ -31,6 +198,8 @@ if(isset($_POST['id_aktif'])){
     }
 }
 
+
+//Nonaktif User
 if(isset($_POST['id_nonaktif'])){
     $id = $_POST['id_nonaktif'];
     $cek = $db_ekantin->query("SELECT * FROM users WHERE id_users='$id'");
@@ -59,55 +228,82 @@ if(isset($_POST['id_nonaktif'])){
     }
 }
 
+
+//----SEARCH
 $searchPopup = "";
 if(isset($_POST['id_user']) && $_POST['id_user'] != ''){
     $id = $_POST['id_user'];
     $result_search = $db_ekantin->query("SELECT * FROM users WHERE id_users='$id'");
+
     if($result_search->num_rows > 0){
-        $data = $result_search->fetch_assoc();
+        $data     = $result_search->fetch_assoc();
         $username = $data['username'];
         $role     = $data['role'];
         $tipe     = $data['tipe'];
-        $htmlNamaToko = "";
-        if($role == "penjual"){
-            $hasil = $db_ekantin->query("SELECT nama_toko FROM penjual WHERE id_users='$id'");
-            $nama  = $hasil->fetch_assoc();
-            $nama_toko = $nama['nama_toko'];
-            $htmlNamaToko = "<p><span>Nama Toko</span> : $nama_toko</p>";
+
+        if($role == "admin"){
+            $searchPopup = "
+            <div class='popupBackground'>
+                <div class='kotakTengah'>
+                    <img src='../img/silang1.png' class='gambarCentang'>
+                    <p class='kalimatBawah'>Anda tidak bisa mengatur admin lain!</p>
+                    <div class='kotakTombol'>
+                        <a href='kelolaUser.php'><button class='tombolAktif'>Kembali</button></a>
+                    </div>
+                </div>
+            </div>";
+
+        } else {
+            // Penjual atau pembeli
+            $htmlNamaToko = "";
+            if($role == "penjual"){
+                $hasil     = $db_ekantin->query("SELECT nama_toko FROM penjual WHERE id_users='$id'");
+                $nama      = $hasil->fetch_assoc();
+                $nama_toko = $nama['nama_toko'];
+                $htmlNamaToko = "<p><span>Nama Toko</span> : $nama_toko</p>";
+            }
+
+            $searchPopup = "
+            <div class='popupBackground'>
+                <div class='kotakTengah'>
+                    <a class='tombolClose' href='kelolaUser.php'>
+                        <img src='../img/silang1.png'>
+                    </a>
+                    <p class='judulKotak'>KELOLA USER</p>
+                    <div class='infoUser'>
+                        <p><span>NAMA</span> : $username</p>
+                        <p><span>ROLE</span> : $role</p>
+                        <p><span>TIPE</span> : $tipe</p>
+                        $htmlNamaToko
+                    </div>
+                    <div class='kotakTombol'>
+                        <form method='POST'>
+                            <button type='submit' name='id_aktif' value='$id' class='tombolAktif'>Aktifkan</button>
+                        </form>
+                        <form method='POST'>
+                            <button type='submit' name='id_nonaktif' value='$id' class='tombolNonaktif'>Nonaktifkan</button>
+                        </form>
+                        <form method='POST'>
+                            <button type='submit' name='edit_user' value='$id' class='tombolEdit'>Edit User</button>
+                        </form>
+                        <form method='POST'>
+                            <button type='submit' name='password_user' value='$id' class='tombolPassword'>Password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>";
         }
-        $searchPopup = "
-        <div class='popupBackground'>
-            <div class='kotakTengah'>
-                <a class='tombolClose' href='kelolaUser.php'>
-                    <img src='../img/silang1.png'>
-                </a>
-                <p class='judulKotak'>UBAH STATUS USER</p>
-                <div class='infoUser'>
-                    <p><span>NAMA</span> : $username</p>
-                    <p><span>ROLE</span> : $role</p>
-                    <p><span>TIPE</span> : $tipe</p>
-                    $htmlNamaToko
-                </div>
-                <div class='kotakTombol'>
-                    <form method='POST'>
-                        <button type='submit' name='id_aktif' value='$id' class='tombolAktif'>Aktifkan</button>
-                    </form>
-                    <form method='POST'>
-                        <button type='submit' name='id_nonaktif' value='$id' class='tombolNonaktif'>Nonaktifkan</button>
-                    </form>
-                </div>
-            </div>
-        </div>";
+
     } else {
         $searchPopup = "
         <div class='popupBackground'>
-        <div class='kotakTengah'>
-            <img src='img/silang1.png' class='gambarCentang'>
-            <p class='kalimatBawah'>ID tidak ditemukan!</p>
-            <div class='kotakTombol'>
-                <a href='kelolaUser.php'><button class='tombolAktif'>Kembali</button></a>
+            <div class='kotakTengah'>
+                <img src='../img/silang1.png' class='gambarCentang'>
+                <p class='kalimatBawah'>ID tidak ditemukan!</p>
+                <div class='kotakTombol'>
+                    <a href='kelolaUser.php'><button class='tombolAktif'>Kembali</button></a>
+                </div>
             </div>
-        </div>
         </div>";
     }
 }
@@ -117,7 +313,7 @@ if(isset($_POST['filter_penjual'])){
 } elseif(isset($_POST['filter_pembeli'])){
     $query = "SELECT * FROM users WHERE role='pembeli'";
 } else {
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM users WHERE role != 'admin'";
 }
 ?>
 
@@ -131,6 +327,7 @@ if(isset($_POST['filter_penjual'])){
 </head>
 <body>
     
+    <?php echo $notif; ?>
     <?php echo $popup; ?>
     <?php echo $searchPopup; ?>
 
@@ -150,7 +347,7 @@ if(isset($_POST['filter_penjual'])){
                     </a>
 
                     <a href="kelolaUser.php">
-                    <div class="menu" id="menu_aktif">>
+                    <div class="menu" id="menu_aktif">
                         <p>Kelola User</p>
                     </div>
                     </a>
@@ -159,6 +356,10 @@ if(isset($_POST['filter_penjual'])){
         </div>
 
         <div class="containerDash">
+            
+            <a href="tambahUser.php" class="tombolTambah">
+                <img src="../img/tombolPlus.png">
+            </a>
 
             <div class="containerSearch">
 

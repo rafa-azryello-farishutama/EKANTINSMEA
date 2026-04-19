@@ -8,26 +8,49 @@
 </head>
 <body>
 <div class='popupBackground'>
-            <div class='kotakTengah'>
-                <a class='tombolClose' href='kelolaUser.php'>
-                    <img src='img/centang1.png'>
-                </a>
-                <p class='judulKotak'>UBAH STATUS USER</p>
-                <div class='infoUser'>
-                    <p><span>NAMA</span> : $username</p>
-                    <p><span>ROLE</span> : $role</p>
-                    <p><span>TIPE</span> : $tipe</p>
-                    $htmlNamaToko
+                <div class='kotakTengah'>
+                    <p class='judulKotak'>Edit User</p>
+        
+                <form method='POST' class='isiPopup'>
+
+                    <input type='hidden' name='id_edit' value='$id'>
+
+                    <input type='text' name='username' class='kotakInput' placeholder='Username' value='$username'>
+                    <input type='text' name='no_telepon' class='kotakInput' placeholder='No HP' value='$telepon'>
+                    <input type='text' name='email' class='kotakInput' placeholder='Email' value='$email'>
+                    <input type='text' name='alamat' class='kotakInput' placeholder='Alamat' value='$alamat'>
+
+                <div class='kotakRadio'>
+                <label>
+                    <input type='radio' name='tipe' value='siswa' $cekSiswa> Siswa
+                </label>
+
+                <label>
+                    <input type='radio' name='tipe' value='guru' $cekGuru> Guru
+                </label>
+
+                <label>
+                    <input type='radio' name='tipe' value='orang_luar' $cekOrangluar> Orang Luar
+                </label>
                 </div>
-                <div class='kotakTombol'>
-                    <form method='POST'>
-                        <button type='submit' name='id_aktif' value='$id' class='tombolAktif'>Aktifkan</button>
-                    </form>
-                    <form method='POST'>
-                        <button type='submit' name='id_nonaktif' value='$id' class='tombolNonaktif'>Nonaktifkan</button>
-                    </form>
-                </div>
+
+            <div class='kotakRadio'>
+                <label>
+                    <input type='radio' name='role' value='penjual' $cekPenjual> Penjual
+                </label>
+
+                <label>
+                    <input type='radio' name='role' value='pembeli' $cekPembeli> Pembeli
+                </label>
             </div>
-        </div>
+
+           <div class="pemisahTombol">
+            <input type='submit' name='simpan_edit' value='Simpan' class='tombolSubmit'>
+            <a href='edit.php' class='linkKembali'>Kembali</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
 </body>
 </html>

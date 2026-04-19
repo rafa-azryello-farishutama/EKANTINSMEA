@@ -56,8 +56,8 @@ body {
 .menu {
     width: 90%;
     height: 50px;
-    border-radius: 25px; 
-    background-color: #f5f6f1; 
+    border-radius: 25px; /* radius penuh */
+    background-color: #f5f6f1; /* semua putih */
     box-sizing: border-box;
     padding: 0 20px;
     display: flex;
@@ -91,14 +91,17 @@ body {
 
 .containerSearch{
     width: 100%;
-    height: 80px;
+    height: 90px;
     display: flex;
     align-items: center;
+    gap: 190x;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .containerButton{
     width: 100%;
-    height: 70px;
+    height: 60px;
     display: flex;
     align-items: center;
 }
@@ -122,7 +125,7 @@ body {
 .displayAkun{
     display: flex;
     align-items: center;
-    right: 15px;
+    margin-left: auto;
 }
 
 .profilAkun {
@@ -186,12 +189,16 @@ form {
 .containerCari {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 15px;
-    width: 70%;
+    width: 90%;
     height: 100%;
     padding: 0 20px;
     box-sizing: border-box;
+}
+
+.containerCari{
+    width: 60%;
+    height: auto;
 }
 
 .kotakSearch {
@@ -248,6 +255,7 @@ form {
     flex-direction: column;
     gap: 20px;
     overflow-y: auto; 
+    border-radius: 15px 0 0 0;
 }
 
 .kotakList::-webkit-scrollbar {
@@ -293,6 +301,105 @@ form {
 .kol-email, .col-email   { display: flex; justify-content: center; width: 180px; }
 .kol-status, .col-status   { display: flex; justify-content: center; width: 80px; }
 
+.tombolTambah {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.tombolTambah img {
+    width: 55px;
+    height: auto;
+}
+
+.kotakIsi, .pemisahRadio{
+    width:83%;
+    height: 50px;
+    padding:20px;
+    border-radius:20px;
+    border: none;
+    box-sizing:border-box;
+    background-color: #9e080f;
+    color: #f5f6f1;
+}
+
+.kotakRadio, .submitTengah{
+    width: 87%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.submitTengah{
+    margin-top: 27px;
+}
+
+.pemisah{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pemisah b {
+    width: 120px;
+    display: inline-block;
+    text-align: right;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label {
+    display: inline-block;
+    padding: 8px 35px;
+    border-radius: 20px;
+    border: 2px solid #d9d9d9;
+    background-color: #f5f6f1;
+    color: gray;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #9e070e;
+    border-color: #9e070e;
+    color: white;
+}
+
+.kotakList form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.tombolSubmit {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #9e080f;
+    color: #f5f6f1;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 .popupBackground{
     position: fixed;
     top: 0;
@@ -322,39 +429,27 @@ form {
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 
-.tombolClose {
-    position: absolute;
-    top: 12px;
-    right: 12px;
+.kotakTombol a {
+    display: block;
+    flex: 1;
 }
 
-.tombolClose img {
-    width: 35px;
-    height: auto;
-}
-
-.judulKotak {
-    font-weight: bold;
-    font-size: 18px;
-    margin: 0;
-}
-
-.infoUser {
+.kotakTombol a button {
     width: 100%;
-    background-color: #ececec;
-    border-radius: 8px;
-    padding: 10px 15px;
-    box-sizing: border-box;
 }
 
-.infoUser p {
-    margin: 5px 0;
-    font-size: 18px;
-}
-
-.infoUser span {
-    font-weight: bold;
+.tombolAktif{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f5f6f1;
     color: #9e080f;
+    border: 3px solid #9e080f;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .gambarCentang {
@@ -371,32 +466,11 @@ form {
     text-align: center;
 }
 
-.kotakTombol a {
-    display: block;
-    flex: 1;
-}
-
-.kotakTombol a button {
-    width: 100%;
-}
-
-.kotakTombol{
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    background-color: #f5f6f1;
-    color: #9e080f;
-    border: 3px solid #9e080f;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.tombolAktif:hover {
-    background-color: #9e080f;
-    color: #f5f6f1;
+.kotakTombol {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
 }
 
 .kotakTombol .tombolAktif {

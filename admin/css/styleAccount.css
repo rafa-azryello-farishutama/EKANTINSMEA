@@ -1,6 +1,6 @@
 body {
     display: flex;
-    background-color: white;
+    background-color: #f5f6f1;
     min-height: 100vh;
     margin: 0;
 }
@@ -20,7 +20,7 @@ body {
 
 .kotakLogo {
     width: 300px;
-    height: 130px;
+    height: 110px;
     background-color: #9e070e; 
     border-radius: 0 0 30px 0;
     display: flex;
@@ -46,18 +46,31 @@ body {
     justify-content: center;
     gap: 8px;
     margin-top: 50px;
-    padding: 0 20px;
+    padding: 0 0 0 20px;
+}
+
+.barisMenu a{
+    display: block;
+    text-decoration: none;
 }
 
 .menu{
-    width: 100%;
+    width: 90%;
     height: 50px;
-    background-color: yellow;
-    border-radius: 15px;
-    display: flex;
-    align-items: 8px;
+    border-radius: 25px; 
+    background-color: #f5f6f1; 
     box-sizing: border-box;
-    padding: 0 15px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu p {
+    margin: 0;
+    font-size: 16px;
+    color: #9e070e;
+    font-weight: bold;
 }
 
 
@@ -144,3 +157,91 @@ form {
     justify-content: center;
     align-items: center;
 }
+
+form {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.kotakGantiPassword {
+    width: 100%;
+    background-color: #f5f6f1;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+}
+
+.judulGanti {
+    font-size: 18px;
+    font-weight: bold;
+    color: #9e070e;
+    margin: 0;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.tombolTambah {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.tombolTambah img {
+    width: 55px;
+    height: auto;
+}
+
+.isiPopup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.inputPassword {
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
+    border: 1px solid #cbcbcb;
+    padding: 0 15px;
+    font-size: 15px;
+    box-sizing: border-box;
+    background-color: white;
+    outline: none;
+}
+
+.inputPassword:focus {
+    border: 2px solid #9e070e;
+}
+
+.tombolSimpan {
+    width: 100%;
+    height: 45px;
+    background-color: #9e070e;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tombolSimpan:hover {
+    background-color: #7a050b;
+}
+

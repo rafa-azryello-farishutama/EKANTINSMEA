@@ -109,7 +109,6 @@ body{
     cursor: pointer;
     font-weight: bold;
     font-size: 13px;
-    transition: 0.3s;
 }
 
 .tombolPenjual button {
@@ -132,6 +131,78 @@ body{
     color: white;
 }
 
+.popupBackground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.kotakInput
+    {
+    width:100%;
+    height: 47px;
+    padding:10px;
+    border-radius:20px;
+    border: none;
+    box-sizing:border-box;
+    background-color: #7CFC00;
+}
+
+.isiPopup {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;              
+    width: 100%;
+    align-items: center;
+}
+
+.tombolSubmit {
+    background: greenyellow;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    color: purple;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.tombolSubmit:hover {
+    background: #7CFC00;
+}
+
+.linkKembali {
+    background: greenyellow;
+    width: 120px;
+    height: 35px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: purple;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.linkKembali:hover {
+    background: #7CFC00;
+}
+
 .nonaktifPengguna {
     position: fixed;
     top: 15px;
@@ -150,24 +221,8 @@ body{
     width: 80px;
 }
 
-.nonaktifPengguna input[type="submit"] {
-    padding: 8px 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 13px;
-    background-color: #9e080f;
-    color: white;
-    transition: 0.3s;
-}
-
-.nonaktifPengguna input[type="submit"]:hover {
-    color: #9e080f;
-}
-
 .kotakTengah {
-    background-color: #f5f6f1;
+    background-color: white;
     border-radius: 12px;
     padding: 30px 40px;
     display: flex;
@@ -176,7 +231,20 @@ body{
     gap: 15px;
     width: 300px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    position: relative;
+}
+
+.gambarCentang {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.kalimatBawah {
+    font-size: 14px;
+    font-weight: bold;
+    color: purple;
+    margin: 5px 0;
+    text-align: center;
 }
 
 .tombolAktif {
@@ -184,142 +252,54 @@ body{
     padding: 10px;
     border: none;
     border-radius: 20px;
-    background-color: #f5f6f1;
-    color: #9e080f;
-    border: 3px solid #9e080f;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.kotakTombol form {
-    flex: 1;
-}
-
-.kotakTombol form button {
-    width: 100%;
-}
-
-.tombolAktif:hover {
-    background-color: #9e080f;
-    color: #f5f6f1;
-}
-
-.tombolNonaktif {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #9e080f;
-    border-radius: 20px;
-    background-color: #f5f6f1;
-    color: #9e080f;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.tombolNonaktif:hover {
-    background-color: #9e080f;
-    color: #f5f6f1;
-}
-
-.judulKotak {
-    font-weight: bold;
-    font-size: 18px;
-    margin: 0;
-}
-
-.infoUser {
-    width: 100%;
-    background-color: #ececec;
-    border-radius: 8px;
-    padding: 10px 15px;
-    box-sizing: border-box;
-}
-
-.infoUser p {
-    margin: 5px 0;
-    font-size: 18px;
-}
-
-.infoUser span {
-    font-weight: bold;
-    color: #9e080f;
-}
-
-.gambarCentang {
-    width: 90px;
-    height: auto;
-    object-fit: contain;
-}
-
-.kalimatBawah {
-    font-size: 14px;
-    font-weight: bold;
-    color: #9f0007;
-    margin: 5px 0;
-    text-align: center;
-}
-
-.kotakTombol {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 300px;
-}
-
-.kotakTombol .tombolAktif {
-    flex: 1;
-}
-
-.popupBackground{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0,0,0,0.5);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 9999;
-}
-
-.akun {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
     background-color: purple;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.akun p {
     color: white;
     font-weight: bold;
-    font-size: 16px;
-    margin: 0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.jarakTombol a {
-    text-decoration: none;
+.nonaktifPengguna input[type="submit"] {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    background-color: purple;
+    color: white;
+    transition: 0.3s;
+}
+
+.nonaktifPengguna input[type="submit"]:hover {
+    background-color: plum;
+    color: purple;
+}
+
+.kotakRadio {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.kotakRadio label {
     display: flex;
     align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #444;
+    cursor: pointer;
 }
 
-.tombolClose {
-    position: absolute;
-    top: 12px;
-    right: 12px;
+.judulKotak{
+    font-size: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.tombolClose img {
-    width: 35px;
-    height: auto;
+.pemisahTombol{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 }

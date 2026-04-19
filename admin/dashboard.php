@@ -1,12 +1,65 @@
 <?php
 include '../koneksi.php';
 
+$searchPopup = "";
+if(isset($_POST['id_user']) && $_POST['id_user'] != ''){
+    $id = $_POST['id_user'];
+    $result_search = $db_ekantin->query("SELECT * FROM users WHERE id_users='$id'");
+    if($result_search->num_rows > 0){
+        $data = $result_search->fetch_assoc();
+        $username = $data['username'];
+        $role = $data['role'];
+        $tipe = $data['tipe'];
+        $email = $data['email'];
+        $telepon = $data['no_telepon'];
+        $status = $data['status'];
+        $alamat = $data['alamat'];
+        $htmlNamaToko = "";
+        if($role == "penjual"){
+            $hasil = $db_ekantin->query("SELECT nama_toko FROM penjual WHERE id_users='$id'");
+            $nama  = $hasil->fetch_assoc();
+            $nama_toko = $nama['nama_toko'];
+            $htmlNamaToko = "<p><span>Nama Toko</span> : $nama_toko</p>";
+        }
+        $searchPopup = "
+        <div class='popupBackground'>
+            <div class='kotakTengah'>
+                <a class='tombolClose' href='kelolaUser.php'>
+                    <img src='../img/silang1.png'>
+                </a>
+                <p class='judulKotak'>KELOLA USER</p>
+                <div class='infoUser'>
+                    <p><span>NAMA</span> : $username</p>
+                    <p><span>ROLE</span> : $role</p>
+                    <p><span>TIPE</span> : $tipe</p>
+                    $htmlNamaToko
+                    <p><span>EMAIL</span> : $email</p>
+                    <p><span>TELEPON</span> : $telepon</p>
+                    <p><span>ALAMAT</span> : $alamat</p>
+                    <p><span>STATUS</span> : $status</p>
+                </div>
+            </div>
+        </div>";
+    } else {
+        $searchPopup = "
+        <div class='popupBackground'>
+        <div class='kotakTengah'>
+            <img src='img/silang1.png' class='gambarCentang'>
+            <p class='kalimatBawah'>ID tidak ditemukan!</p>
+            <div class='kotakTombol'>
+                <a href='kelolaUser.php'><button class='tombolAktif'>Kembali</button></a>
+            </div>
+        </div>
+        </div>";
+    }
+}
+
 if(isset($_POST['filter_penjual'])){
     $query = "SELECT * FROM users WHERE role='penjual'";
 } elseif(isset($_POST['filter_pembeli'])){
     $query = "SELECT * FROM users WHERE role='pembeli'";
 } else {
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM users WHERE role !='admin'";
 }
 ?>
 
@@ -19,6 +72,8 @@ if(isset($_POST['filter_penjual'])){
     <link rel="stylesheet" href="css/styleDashboard.css">
 </head>
 <body>
+
+<?php echo $searchPopup; ?>
     
     <div class="containerUtama">
 
@@ -52,7 +107,7 @@ if(isset($_POST['filter_penjual'])){
                 <div class="containerCari">
                     <div class="kotakSearch">
                         <img src="../img/search.png">
-                        <input type="number" name="name_id" placeholder="Search id">
+                        <input type="number" name="id_user" placeholder="Search id">
                     </div>
                     <button type="submit" name="cari_user" class="tombolSearch">Search id</button>
                 </div>
